@@ -5,17 +5,21 @@ using UnityEngine;
 public class ColisionObjeto : MonoBehaviour
 {
     public float countdownTime = 5f;
-    private bool isInteractable = true; // Variable de estado para controlar la interaccion
-    private bool collided = false;
+    private bool isInteractable = true;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!collided && isInteractable)
+        if (isInteractable)
         {
-            collided = true;
-            isInteractable = false; // Bloquear el objeto
-            gameObject.SetActive(false);
-            Invoke(nameof(ChangeAppearance), countdownTime);
+            // Verificar si el objeto que colisionó es el "Player"
+            if (other.CompareTag("Micro"))
+            {
+                isInteractable = false; // Bloquear el objeto
+
+                // Realizar acciones cuando el objeto interactuable está disponible para interacción
+                gameObject.SetActive(false);
+                Invoke(nameof(ChangeAppearance), countdownTime);
+            }
         }
     }
 
@@ -24,10 +28,9 @@ public class ColisionObjeto : MonoBehaviour
         // Cambiar propiedades del objeto, como el sprite o el color
         // Cambiar la etiqueta del objeto con gameObject.tag = "NuevaEtiqueta";
 
-        isInteractable = true; // Desbloquear el objeto después de la interaccion
+        isInteractable = true; // Desbloquear el objeto después de la interacción
     }
 
-    // Método para verificar si el objeto esta actualmente bloqueado
     public bool IsObjectInteractable()
     {
         return isInteractable;
