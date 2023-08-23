@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class SeleccionarPedido : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string nombreDelPlato; // Nombre del plato asociado al botón
+    public int costoDelPlato; // Costo del plato asociado al botón
 
-    // Update is called once per frame
-    void Update()
+    private bool seleccionado = false; // Indica si el plato ha sido seleccionado
+
+    public void OnClick()
     {
-        
+        if (!seleccionado)
+        {
+            seleccionado = true;
+            PedidoManager.AgregarPlato(nombreDelPlato, costoDelPlato); // Agrega el plato al pedido
+        }
+        else
+        {
+            seleccionado = false;
+            PedidoManager.RemoverPlato(nombreDelPlato); // Remueve el plato del pedido
+        }
     }
 }
