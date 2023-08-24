@@ -5,12 +5,12 @@ using System.Collections.Generic;
 public class PedidoManager : MonoBehaviour
 {
     private static PedidoManager instancia;
-    public Text resumenTextEnOtroObjeto; // Asigna esto en el Inspector
+    public Text resumenTextEnOtroObjeto; 
 
     private string pedidoResumen = "";
     private int totalPedido = 0;
 
-    private List<Adicion> adicionesEnPedido = new List<Adicion>(); // Lista de adiciones en el pedido
+    private List<Adicion> adicionesEnPedido = new List<Adicion>(); 
 
     private void Awake()
     {

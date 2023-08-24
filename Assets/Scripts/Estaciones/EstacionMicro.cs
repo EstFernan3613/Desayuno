@@ -26,7 +26,7 @@ public class EstacionMicro : MonoBehaviour
 
             yield return new WaitForSeconds(5);
 
-            // Realizar otras acciones con el queso caliente
+            
 
             queso.tag = "QuesoListo";
 

@@ -4,11 +4,13 @@ using UnityEngine.UI;
 
 public class ReiniciarIngredientesButton : MonoBehaviour
 {
-    public List<GameObject> ingredientes; // Lista de ingredientes a reiniciar
+    public List<GameObject> ingredientes; 
+    public GameObject objetoEmplatadoNO; 
+    public Sprite spritePlato; 
 
     private void Start()
     {
-        // Asegúrate de asignar los ingredientes en el Inspector del botón
+        
     }
 
     public void ReiniciarIngredientes()
@@ -16,6 +18,11 @@ public class ReiniciarIngredientesButton : MonoBehaviour
         foreach (GameObject ingrediente in ingredientes)
         {
             ResetearIngrediente(ingrediente);
+        }
+
+        if (objetoEmplatadoNO != null)
+        {
+            ResetearObjeto(objetoEmplatadoNO);
         }
     }
 
@@ -25,8 +32,19 @@ public class ReiniciarIngredientesButton : MonoBehaviour
 
         if (ingredienteImage != null)
         {
-            ingredienteImage.color = Color.white; // Cambia el color a blanco (color original)
-            // Aquí puedes realizar otras acciones de reinicio si es necesario
+            ingredienteImage.color = Color.white;
+            
+        }
+    }
+
+    private void ResetearObjeto(GameObject objeto)
+    {
+        Image objetoImage = objeto.GetComponent<Image>();
+
+        if (objetoImage != null)
+        {
+            objetoImage.sprite = spritePlato; 
+            
         }
     }
 }

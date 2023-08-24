@@ -13,7 +13,7 @@ public class Ingrediente : MonoBehaviour
 
         if (other.CompareTag("EstacionSarten") && !cocido)
         {
-            // Iniciar el proceso de cocción en la estación de sartén
+            
             StartCoroutine(CocinarIngrediente());
         }
     }
@@ -21,8 +21,7 @@ public class Ingrediente : MonoBehaviour
     private IEnumerator CocinarIngrediente()
     {
         cocido = true;
-        // Implementa aquí la lógica para el proceso de cocción específico del ingrediente
-        // ...
+       
         yield return null;
     }
 }

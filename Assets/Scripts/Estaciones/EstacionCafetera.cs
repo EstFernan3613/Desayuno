@@ -23,11 +23,11 @@ public class EstacionCafetera : MonoBehaviour
 
         cafePreparado = true;
 
-        // Cambia el sprite del objeto "café" al sprite preparado
+        
         Image cafeImage = cafe.GetComponent<Image>();
         cafeImage.sprite = spriteCafePreparado;
         cafe.tag = "CafeListo";
-        // Realiza otras acciones con el café preparado
+        
     }
 
 }

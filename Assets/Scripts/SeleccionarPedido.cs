@@ -4,16 +4,16 @@ using UnityEngine.UI;
 
 public class SeleccionarPedido : MonoBehaviour
 {
-    public string nombreDelPlato; // Nombre del plato asociado al botón
-    public int costoDelPlato; // Costo del plato asociado al botón
+    public string nombreDelPlato; 
+    public int costoDelPlato; 
 
-    public List<Adicion> adicionesDisponibles = new List<Adicion>(); // Lista de adiciones
+    public List<Adicion> adicionesDisponibles = new List<Adicion>(); 
 
-    private List<Adicion> adicionesSeleccionadas = new List<Adicion>(); // Lista de adiciones seleccionadas
+    private List<Adicion> adicionesSeleccionadas = new List<Adicion>(); 
 
-    private bool seleccionado = false; // Indica si el plato ha sido seleccionado
+    private bool seleccionado = false; 
 
-    private PedidoManager instanciaPedidoManager; // Referencia a la instancia de PedidoManager
+    private PedidoManager instanciaPedidoManager; 
 
     private void Start()
     {
@@ -25,7 +25,7 @@ public class SeleccionarPedido : MonoBehaviour
         if (!seleccionado)
         {
             seleccionado = true;
-            PedidoManager.AgregarPlato(nombreDelPlato, costoDelPlato); // Agrega el plato al pedido
+            PedidoManager.AgregarPlato(nombreDelPlato, costoDelPlato); 
 
             foreach (Adicion adicion in adicionesSeleccionadas)
             {
@@ -35,7 +35,7 @@ public class SeleccionarPedido : MonoBehaviour
         else
         {
             seleccionado = false;
-            PedidoManager.RemoverPlato(nombreDelPlato); // Remueve el plato del pedido
+            PedidoManager.RemoverPlato(nombreDelPlato); 
 
             foreach (Adicion adicion in adicionesSeleccionadas)
             {

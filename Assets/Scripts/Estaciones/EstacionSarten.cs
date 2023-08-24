@@ -35,7 +35,7 @@ public class EstacionSarten : MonoBehaviour
         huevoImage.color = colorCocido;
 
 
-        // Realizar otras acciones con el huevo cocido, como moverlo a la zona de emplatado
+        
         huevo.tag = "HuevoListo";
     }
 
@@ -47,7 +47,7 @@ public class EstacionSarten : MonoBehaviour
         tocinoImage.color = colorCocido;
 
 
-        // Realizar otras acciones con el tocino cocido, como moverlo a la zona de emplatado
+        
         tocino.tag = "TocinoListo";
     }
 
@@ -59,7 +59,7 @@ public class EstacionSarten : MonoBehaviour
         peperoniImage.color = colorCocido;
 
 
-        // Realizar otras acciones con el peperoni cocido, como moverlo a la zona de emplatado
+        
         peperoni.tag = "PeperoniListo";
     }
 }

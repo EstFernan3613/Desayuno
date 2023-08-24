@@ -26,7 +26,7 @@ public class EstacionCuchillo : MonoBehaviour
 
             yield return new WaitForSeconds(5);
 
-            // Cambiar la etiqueta del ingrediente cortado
+            
             if (ingrediente.CompareTag("Tomate"))
             {
                 ingrediente.tag = "TomateListo";
@@ -36,7 +36,7 @@ public class EstacionCuchillo : MonoBehaviour
                 ingrediente.tag = "LechugaListo";
             }
 
-            // Realizar otras acciones con el ingrediente cortado
+            
 
             ingredienteImage.color = colorCortado;
         }
