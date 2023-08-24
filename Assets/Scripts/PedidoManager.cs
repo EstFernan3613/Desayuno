@@ -1,28 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class PedidoManager : MonoBehaviour
 {
-    public Text resumenText; // Referencia al objeto de texto donde se mostrará el resumen del pedido
     private static PedidoManager instancia;
+    public Text resumenTextEnOtroObjeto; // Asigna esto en el Inspector
+
+    private string pedidoResumen = "";
+    private int totalPedido = 0;
+
+    private List<Adicion> adicionesEnPedido = new List<Adicion>(); // Lista de adiciones en el pedido
 
     private void Awake()
     {
         if (instancia == null)
+        {
             instancia = this;
+        }
         else
+        {
             Destroy(gameObject);
+        }
     }
-
-    private string pedidoResumen = "";
-    private int totalPedido = 0;
 
     public static void AgregarPlato(string nombrePlato, int costoPlato)
     {
         instancia.pedidoResumen += nombrePlato + "\n";
         instancia.totalPedido += costoPlato;
+        instancia.ActualizarResumen();
+    }
+
+    public void AgregarAdicion(string nombreAdicion, int costoAdicion)
+    {
+        Adicion nuevaAdicion = new Adicion(nombreAdicion, costoAdicion);
+        adicionesEnPedido.Add(nuevaAdicion);
         instancia.ActualizarResumen();
     }
 
@@ -33,16 +45,26 @@ public class PedidoManager : MonoBehaviour
         instancia.ActualizarResumen();
     }
 
+    public void RemoverAdicion(string nombreAdicion)
+    {
+        Adicion adicionARemover = adicionesEnPedido.Find(adicion => adicion.nombre == nombreAdicion);
+        if (adicionARemover != null)
+        {
+            adicionesEnPedido.Remove(adicionARemover);
+            instancia.ActualizarResumen();
+        }
+    }
+
     private static int ObtenerCostoPlato(string nombrePlato)
     {
         switch (nombrePlato)
         {
-            case "Plato A":
-                return 10;
-            case "Plato B":
-                return 15;
-            case "Plato C":
-                return 20;
+            case "Huevos con Tocino":
+                return 7000;
+            case "Sandwich de Peperoni":
+                return 12000;
+            case "Cafe":
+                return 4500;
             default:
                 return 0;
         }
@@ -50,6 +72,28 @@ public class PedidoManager : MonoBehaviour
 
     private void ActualizarResumen()
     {
-        resumenText.text = "Resumen del Pedido:\n" + pedidoResumen + "\nTotal: $" + totalPedido;
+        string resumenAdiciones = "";
+        int totalAdiciones = 0;
+
+        foreach (Adicion adicion in adicionesEnPedido)
+        {
+            resumenAdiciones += adicion.nombre + "\n";
+            totalAdiciones += adicion.costo;
+        }
+
+        resumenTextEnOtroObjeto.text = "Resumen del Pedido:\n" + pedidoResumen + resumenAdiciones + "\nTotal: $" + (totalPedido + totalAdiciones);
+    }
+}
+
+[System.Serializable]
+public class Adicion
+{
+    public string nombre;
+    public int costo;
+
+    public Adicion(string nombre, int costo)
+    {
+        this.nombre = nombre;
+        this.costo = costo;
     }
 }

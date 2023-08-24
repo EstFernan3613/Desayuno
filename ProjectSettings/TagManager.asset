@@ -4,11 +4,22 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Cafetera
-  - Micro
-  - Sarten
-  - Cuchillo
-  - Emplatado
+  - Cafe
+  - Pan
+  - Peperoni
+  - Tomate
+  - Tocino
+  - Huevo
+  - Lechuga
+  - Queso
+  - EstacionSarten
+  - EstacionCuchillo
+  - EstacionMicro
+  - EstacionCafetera
+  - EstacionEmplatado
+  - CebollaLarga
+  - Champi
+  - Pimenton
   layers:
   - Default
   - TransparentFX

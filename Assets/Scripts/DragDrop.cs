@@ -1,41 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems; //Agregar libreria a llamar
+using UnityEngine.EventSystems;
 
-//Agregar las librerias de las cuales vamos a heredar los metodos necesarios
 public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    //La posicion de nuestro objeto a arrastrar
     private RectTransform rTransform;
+    private Vector2 initialPosition;
+
+
 
     private void Awake()
     {
         rTransform = GetComponent<RectTransform>();
+        initialPosition = rTransform.anchoredPosition;
     }
 
-    //
-    public void OnPointerDown(PointerEventData PeventData)
+    public void OnPointerDown(PointerEventData eventData)
     {
-        //Realizar acciones necesarias al clickear o seleccionar el objeto
+        // Realizar acciones necesarias al clickear o seleccionar el objeto
     }
 
-    public void OnBeginDrag(PointerEventData DeventData)
+    public void OnBeginDrag(PointerEventData eventData)
     {
-        //Realizar acciones necesarias al arrastrar el objeto
+        // Realizar acciones necesarias al arrastrar el objeto
     }
 
-    public void OnEndDrag(PointerEventData EeventData)
+    public void OnEndDrag(PointerEventData eventData)
     {
-        //Realizar acciones necesarias al soltar el objeto
+          // El objeto se soltó en otro lugar, regresa a la posición inicial
+            DevolverABarra();
     }
 
-    public void OnDrag(PointerEventData ODeventData)
+    public void OnDrag(PointerEventData eventData)
     {
-        //Modificamos nuestro punto de anclaje de la imagen al punto donde se hizo click
-        //y poder arrastrar el objeto
-        rTransform.anchoredPosition += ODeventData.delta;
+        rTransform.anchoredPosition += eventData.delta;
     }
 
-
+    public void DevolverABarra()
+    {
+        rTransform.anchoredPosition = initialPosition;
+    }
 }
