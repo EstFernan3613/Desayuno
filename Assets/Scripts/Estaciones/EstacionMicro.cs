@@ -32,6 +32,7 @@ public class EstacionMicro : MonoBehaviour
 
             quesoRenderer.color = colorCaliente;
         }
+
     }
 }
 

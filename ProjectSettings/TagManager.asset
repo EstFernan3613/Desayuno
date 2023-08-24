@@ -20,6 +20,13 @@ TagManager:
   - CebollaLarga
   - Champi
   - Pimenton
+  - CafeListo
+  - PeperoniListo
+  - TomateListo
+  - TocinoListo
+  - HuevoListo
+  - LechugaListo
+  - QuesoListo
   layers:
   - Default
   - TransparentFX
